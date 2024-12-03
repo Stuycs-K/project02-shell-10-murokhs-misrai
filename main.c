@@ -17,5 +17,6 @@ void prompt() {
 }
 
 int main(int argc, char *argv[]) {
+    prompt();
     return 0;
 }
