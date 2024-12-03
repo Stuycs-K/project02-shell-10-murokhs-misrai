@@ -8,6 +8,8 @@
 #include <time.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include <signal.h>
+#include <sys/wait.h>
 
 void prompt() {
     char buffer[256];
