@@ -11,6 +11,9 @@ int main(int argc, char *argv[]) {
     char * input  = fgets(user_input, 255, stdin);
     while (temp = strsep( &input, ";" )){
       printf("%s\n", temp);
+      char * args[100];
+      parse_args(temp, args);
+
       //int status1;
       //pid_t commands;
       //commands = wait(&status1);
