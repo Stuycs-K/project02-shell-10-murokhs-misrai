@@ -14,9 +14,16 @@ int main(int argc, char *argv[]) {
         printf("exiting\n");
         kill(getpid(), SIGINT);
       }
+      pid_t child;
+      child = fork();
+      if (child==0){
+        char * args[256];
+        parse_args(temp,args);
+        execvp(args[0],args);
+      }
+    }
       //int status1;
       //pid_t commands;
       //commands = wait(&status1);
-    }
     return 0;
 }
