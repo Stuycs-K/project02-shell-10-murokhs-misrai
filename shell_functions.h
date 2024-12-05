@@ -14,6 +14,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 
+int take_input();
 void prompt();
 void parse_args( char * line, char ** arg_ary );
 

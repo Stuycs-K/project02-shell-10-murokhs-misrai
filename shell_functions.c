@@ -16,3 +16,32 @@ void parse_args( char * line, char ** arg_ary ) {
     }
     arg_ary[index] = NULL;
 }
+
+//returns 0 if passed, -1 if ended
+int take_input(){
+  prompt();
+  char user_input[256];
+  char* temp;
+  char * input  = fgets(user_input, 255, stdin);
+  if (user_input==NULL){ //exits if end of file
+    exit(0);
+  }
+  user_input[strlen(user_input)-1] = '\0'; //fix newline
+  while (temp = strsep( &input, ";" )){
+    char * args[256];
+    parse_args(temp,args);
+    if (strcmp(args[0],"exit")==0){
+      exit(0);
+      return -1;
+    }
+    pid_t child;
+    child = fork();
+    if (child==0){
+      execvp(args[0],args);
+    }
+  }
+  int status1;
+  pid_t commands;
+  commands = wait(&status1);
+  return 0;
+}
