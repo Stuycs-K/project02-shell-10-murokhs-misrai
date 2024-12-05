@@ -17,6 +17,13 @@ void parse_args( char * line, char ** arg_ary ) {
     arg_ary[index] = NULL;
 }
 
+//cd
+void dir(char * input) {
+  if (strcmp(input,".")==0){
+    printf("keepdir"); //temporary
+  }
+}
+
 //returns 0 if passed, -1 if ended
 int take_input(){
   prompt();
@@ -25,6 +32,7 @@ int take_input(){
   char * input  = fgets(user_input, 255, stdin);
   if (user_input==NULL){ //exits if end of file
     exit(0);
+    return -1;
   }
   user_input[strlen(user_input)-1] = '\0'; //fix newline
   while (temp = strsep( &input, ";" )){
@@ -33,6 +41,9 @@ int take_input(){
     if (strcmp(args[0],"exit")==0){
       exit(0);
       return -1;
+    }
+    if (strcmp(args[0],"cd")==0){
+      dir(args[1]);
     }
     pid_t child;
     child = fork();
