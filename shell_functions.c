@@ -22,6 +22,12 @@ void dir(char * input) {
   if (strcmp(input,".")==0){
     printf("keepdir"); //temporary
   }
+  if (strcmp(input,"..")==0){
+    //help
+  }
+  else{
+    chdir(input);
+  }
 }
 
 //returns 0 if passed, -1 if ended
