@@ -17,19 +17,6 @@ void parse_args( char * line, char ** arg_ary ) {
     arg_ary[index] = NULL;
 }
 
-//cd
-void dir(char * input) {
-  if (strcmp(input,".")==0){
-    printf("keepdir"); //temporary
-  }
-  if (strcmp(input,"..")==0){
-    //help
-  }
-  else{
-    chdir(input);
-  }
-}
-
 //returns 0 if passed, -1 if ended
 int take_input(){
   prompt();
@@ -49,12 +36,14 @@ int take_input(){
       return -1;
     }
     if (strcmp(args[0],"cd")==0){
-      dir(args[1]);
+      chdir(args[1]);
     }
-    pid_t child;
-    child = fork();
-    if (child==0){
-      execvp(args[0],args);
+    else{
+      pid_t child;
+      child = fork();
+      if (child==0){
+        execvp(args[0],args);
+      }
     }
   }
   int status1;

@@ -5,7 +5,10 @@
 ### <Insert Creative Team Name>
 
 ## Features Implemented
--
+- basic shell functionality
+- exit to exit
+- cd . and cd INTO a directory
+- parse input, parse args, run args
 ## Features Attempted To Implement But Were Unsuccessful
 -
 ## Bugs
