@@ -12,9 +12,10 @@
 - parse input, parse args, run args
 - redirection
 ## Features Attempted To Implement But Were Unsuccessful
--
+- pipes |
+- shortening path but it doesnt break when user attempts to cd earlier than home directory
 ## Bugs
--
+- redirection: pipes | do not currently work, but < and > do
 ## Function Headers
 
 // prints the shell prompt
