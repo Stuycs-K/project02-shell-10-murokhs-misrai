@@ -24,14 +24,16 @@ int take_input(){
   prompt();
   input = fgets(user_input, 255, stdin);
   if (input==NULL){ //exits if end of file
-    printf("end of file\n");
+    printf("\n");
     exit(0);
   }
   if (strcmp(user_input,"\n")==0){ //if just enter is pressed
     return 0;
   }
   char* temp;
-  user_input[strlen(user_input)-1] = '\0'; //fix newline
+  if (user_input[strlen(user_input)-1] == '\n');{
+    //user_input[strlen(user_input)-1] = '\0'; //fix newline
+  }
   while (temp = strsep( &input, ";" )){
     char * args[256];
     parse_args(temp,args);
