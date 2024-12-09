@@ -10,8 +10,24 @@
 - ctrl-D end of file
 - cd . cd .. and cd into a directory
 - parse input, parse args, run args
+- redirection
 ## Features Attempted To Implement But Were Unsuccessful
 -
 ## Bugs
 -
 ## Function Headers
+
+// prints the shell prompt
+void prompt();
+
+// parses the line of input into the command and arguments
+void parse_args( char * line, char ** arg_ary );
+
+// determines whether or not output redirection is needed
+int needs_redirect(char ** args);
+
+// main function to read input and create child processes
+int take_input();
+
+// implements output redirection by writing to given file
+void redirect_output(char * command, char ** args);

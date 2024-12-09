@@ -1,5 +1,6 @@
 #include "shell_functions.h"
 
+// prints the shell prompt
 void prompt() {
     char buffer[256];
     getcwd(buffer, 255);
@@ -7,6 +8,7 @@ void prompt() {
     fflush(stdout);
 }
 
+// parses the line of input into the command and arguments
 void parse_args( char * line, char ** arg_ary ) {
     int index = 0;
     char *token;
@@ -17,6 +19,7 @@ void parse_args( char * line, char ** arg_ary ) {
     arg_ary[index] = NULL;
 }
 
+// determines whether or not output redirection is needed
 int needs_redirect(char ** args) {
     int i = 0;
 
@@ -29,6 +32,7 @@ int needs_redirect(char ** args) {
     return 0;
 }
 
+// main function to read input and create child processes
 //returns 0 if passed, -1 if ended
 int take_input(){
   char user_input[256];
@@ -75,14 +79,7 @@ int take_input(){
   }
 }
 
-/*
-    } else if (needs_redirect(args)) {
-      pid_t child;
-      child = fork();
-      if (child==0){
-        redirect_output(args[0], args);
-     }
-*/
+// implements output redirection by writing to given file
 void redirect_output(char * command, char ** args) {
     int i = 1;
     char * file_name;
@@ -95,6 +92,7 @@ void redirect_output(char * command, char ** args) {
     }
     if (!file_name) {
         // throw error
+        exit(1);
     }
 
     args[i] = NULL;
