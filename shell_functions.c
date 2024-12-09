@@ -44,7 +44,7 @@ int take_input(){
   }
   char* temp;
   if (user_input[strlen(user_input)-1] == '\n');{
-    //user_input[strlen(user_input)-1] = '\0'; //fix newline
+    user_input[strlen(user_input)-1] = '\0'; //fix newline
   }
   while (temp = strsep( &input, ";" )){
     char * args[256];
